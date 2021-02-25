@@ -1,4 +1,5 @@
-from typing import List
+import collections
+from typing import Deque
 
 
 class ListNode:
@@ -9,7 +10,7 @@ class ListNode:
 
 class Solution:
     def isPalindrome(self, head: ListNode) -> bool:
-        q: List = []
+        q: Deque = collections.deque()
 
         if not head:
             return True
@@ -20,7 +21,7 @@ class Solution:
             node = node.next
 
         while len(q) > 1:
-            if q.pop(0) != q.pop():
+            if q.popleft() != q.pop():
                 return False
 
         return True
